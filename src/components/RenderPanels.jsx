@@ -1,4 +1,4 @@
-import ProjectPanel from "./ProjectPanel.jsx";
+import ProjectPanel from './ProjectPanel.jsx';
 
 function RenderPanels() {
     return
