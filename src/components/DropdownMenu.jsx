@@ -1,6 +1,11 @@
+import { ReactComponent as CogIcon } from '../icons/cog.svg';
+import { ReactComponent as ChevronIcon } from '../icons/chevron.svg';
 
+import { CSSTransition } from 'react-transition-group';
 
 function DropdownMenu() {
+
+    const [activeMenu, setActiveMenu] = useState('main');
 
     function DropdownItem(props) {
         return (
@@ -15,12 +20,21 @@ function DropdownMenu() {
 
     return (
         <div className="dropdown">
-            <DropdownItem>My Profile</DropdownItem>
-            <DropdownItem
-                leftIcon={<CogIcon />}
-                rightIcon={<ChevronIcon />}>
+            <CSSTransition
+                in={activeMenu === 'main'}
+                unmountOnExit
+                timeout={500}
+                classNames='menu-primary'
+                >
+                    <div className="menu">
+                        <DropdownItem>My Profile</DropdownItem>
+                        <DropdownItem
+                            leftIcon={<CogIcon />}
+                            rightIcon={<ChevronIcon />}>
 
-            </DropdownItem>
+                        </DropdownItem>
+                    </div>
+            </CSSTransition>
         </div>
     );
 }
